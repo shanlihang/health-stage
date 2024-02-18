@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const emit = defineEmits(['chooseAccountCenter'])
+
+const sendToFather = () => {
+  emit('chooseAccountCenter')
+}
+</script>
 
 <template>
   <div class="container">
@@ -13,11 +19,14 @@
         <template #title>
           <span>用户中心</span>
         </template>
-        <img
+        <router-link to="/account">
+          <img
           src="../../assets/pic/menus/user-group.svg"
           width="80px"
           height="80px"
+          @click="sendToFather"
         />
+        </router-link>
       </a-tooltip>
     </div>
   </div>

@@ -6,6 +6,10 @@ const router = createRouter({
         {
             path:'/',
             component:HomePage
+        },
+        {
+            path:'/account',
+            component:import('../views/AccountCenter.vue')
         }
     ]
 })

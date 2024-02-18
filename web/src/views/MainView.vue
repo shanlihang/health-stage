@@ -9,21 +9,24 @@ interface menuList{
     id:number
     content:string,
     src:string,
-    isSelect:boolean
 }
 
 const flag = ref<number>(1)
 
 const list:Array<menuList> = reactive([
-    {id:1,content:'首页',src:'/src/assets/pic/menus/index.svg',isSelect:true},
-    {id:2,content:'医疗管理',src:'/src/assets/pic/menus/list.svg',isSelect:false},
-    {id:3,content:'库存管理',src:'/src/assets/pic/menus/site.svg',isSelect:false},
-    {id:4,content:'系统设置',src:'/src/assets/pic/menus/settings.svg',isSelect:false},
-    {id:5,content:'数据大屏',src:'/src/assets/pic/menus/data.svg',isSelect:false}
+    {id:1,content:'首页',src:'/src/assets/pic/menus/index.svg'},
+    {id:2,content:'医疗管理',src:'/src/assets/pic/menus/list.svg'},
+    {id:3,content:'库存管理',src:'/src/assets/pic/menus/site.svg'},
+    {id:4,content:'系统设置',src:'/src/assets/pic/menus/settings.svg'},
+    {id:5,content:'数据大屏',src:'/src/assets/pic/menus/data.svg'}
 ])
 
 const selectMenu = (item:menuList) => {
     flag.value = item.id
+}
+
+const selectAccountCenter = () => {
+    flag.value = 0
 }
 
 </script>
@@ -31,7 +34,7 @@ const selectMenu = (item:menuList) => {
 <template>
   <div class="container">
     <div class="side">
-        <MenuAside>
+        <MenuAside @chooseAccountCenter="selectAccountCenter">
             <MenuItem :class="item.id == flag ? 'select' : ''" @click="selectMenu(item)" :content="item.content" :src="item.src" v-for="item in list" :key="item.id" />
         </MenuAside>
     </div>
