@@ -9,14 +9,14 @@
       <slot></slot>
     </div>
     <div class="user">
-      <a-tooltip placement="right">
+      <a-tooltip placement="top" color="#0884d6">
         <template #title>
           <span>用户中心</span>
         </template>
         <img
           src="../../assets/pic/menus/user-group.svg"
-          width="100px"
-          height="100px"
+          width="80px"
+          height="80px"
         />
       </a-tooltip>
     </div>
@@ -34,8 +34,8 @@
   background-color: rgb(0, 0, 0);
 }
 .container .logo {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
@@ -49,7 +49,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 100px 0;
+  padding: 80% 0;
 }
 .container .user {
   width: 60px;

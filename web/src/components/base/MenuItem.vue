@@ -11,11 +11,11 @@ const props = defineProps<MenuItem>()
 
 <template>
   <div class="section">
-    <a-tooltip placement="right">
+    <a-tooltip placement="right" color="#0884d6">
         <template #title>
           <span>{{ props.content }}</span>
         </template>
-        <img :src="props.src" alt="" style="width:30px;height:30px;">
+        <img :src="props.src" width="40px" height="40px">
       </a-tooltip>
   </div>
 </template>
@@ -31,6 +31,6 @@ const props = defineProps<MenuItem>()
     align-items: center;
 }
 .section:hover{
-  background-color: rgb(49, 50, 51);
+  background-color: rgb(32, 33, 35);
 }
 </style>
