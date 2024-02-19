@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {defineProps} from 'vue'
 const props = defineProps({
     title:{
         default:'一体机设备信息管理系统',
