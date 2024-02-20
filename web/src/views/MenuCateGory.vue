@@ -4,7 +4,7 @@
 <template>
 
   <div class="card">
-    首页
+    菜单分类页面
   </div>
 </template>
 

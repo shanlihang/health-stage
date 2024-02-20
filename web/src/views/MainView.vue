@@ -79,8 +79,7 @@ const selectAccountCenter = () => {
 
 @keyframes changeBkg {
     to{
-        border: 1px rgb(13, 238, 152) solid;
-        /* background-color: dimgray; */
+        background-color: rgba(207, 207, 166, 0.3);
     }
 }
 </style>
