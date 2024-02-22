@@ -42,10 +42,20 @@ const selectAccountCenter = () => {
         <HeadAside title="测试组件系统"/>
     </div>
     <div class="main">
-        <RouterView></RouterView>
+        <div class="router">
+            <img src="/src/assets/pic/header/router.svg" width="20" height="20" style="margin-right:10px">
+            <a-breadcrumb>
+                <a-breadcrumb-item>Home</a-breadcrumb-item>
+                <a-breadcrumb-item><a href="">Application Center</a></a-breadcrumb-item>
+                <a-breadcrumb-item><a href="">Application List</a></a-breadcrumb-item>
+                <a-breadcrumb-item>An Application</a-breadcrumb-item>
+            </a-breadcrumb>
+        </div>
+        <div class="show">
+            <RouterView></RouterView>
+        </div>
+        
     </div>
-    
-    
   </div>
 </template>
 
@@ -72,6 +82,19 @@ const selectAccountCenter = () => {
     position: absolute;
     left:5%;
     top:8%;
+}
+.router{
+    width: 98%;
+    height: 5%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+.show{
+    width: 98%;
+    height: 95%;
+    margin: 0 auto;
+    background-color: brown;
 }
 .select{
     animation: changeBkg 0.2s linear forwards;
