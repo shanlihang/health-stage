@@ -62,7 +62,47 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="datas"></div>
+    <div class="datas">
+      <div class="fontData">
+        <div class="infoCard">
+          <bv-border-box name="border1">
+            <div class="child">
+              <span>今日新增检测数量</span>
+              <span class="num">10</span>
+            </div>
+          </bv-border-box>
+        </div>
+        <div class="infoCard">
+          <bv-border-box name="border1">
+            <div class="child">
+              <span>合作社区数量</span>
+              <span class="num">10</span>
+            </div>
+          </bv-border-box>
+        </div>
+        <div class="infoCard">
+          <bv-border-box name="border1">
+            <div class="child">
+              <span>今日高血压患者人数</span>
+              <span class="num">10</span>
+            </div>
+          </bv-border-box>
+        </div>
+        <div class="infoCard">
+          <bv-border-box name="border1">
+            <div class="child">
+              <span>高血压患者人数</span>
+              <span class="num">10</span>
+            </div>
+          </bv-border-box>
+        </div>
+      </div>
+      <div class="chart">
+        <div class="left"></div>
+        <div class="map"></div>
+        <div class="right"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -98,8 +138,7 @@ onMounted(() => {
   position: absolute;
   right: 0;
 }
-.btns .refresh,
-.full {
+.btns .refresh,.full {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -111,6 +150,52 @@ onMounted(() => {
 .datas {
   width: 100%;
   height: 90%;
-  /* background-color: brown; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+.datas .fontData{
+  height: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.infoCard{
+  width: 20%;
+  height: 90%; 
+}
+.infoCard .child{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.num{
+  font-size: 36px;
+  font-weight: 900;
+  color: crimson;
+}
+.chart{
+  height: 73%;
+  display: flex;
+  justify-content: space-around;
+}
+.chart .left{
+  width: 20%;
+  height: 100%;
+  background-color: #0fee34;
+}
+.chart .map{
+  width: 50%;
+  height: 100%;
+  background-color: aqua;
+}
+.chart .right{
+  width: 20%;
+  height: 100%;
+  background-color: rgb(240, 167, 11);
 }
 </style>

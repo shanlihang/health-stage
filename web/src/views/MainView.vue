@@ -86,16 +86,17 @@ const selectAccountCenter = () => {
 }
 .router{
     width: 98%;
-    height: 5%;
+    height: 4%;
     margin: 0 auto;
     display: flex;
     align-items: center;
 }
 .show{
     width: 98%;
-    height: 93%;
+    height: 94%;
     margin: 0 auto;
-    background-color: #fff;
+    overflow: hidden;
+    border-radius: 9px;
 }
 .select{
     animation: changeBkg 0.2s linear forwards;
