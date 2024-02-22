@@ -37,7 +37,7 @@ onMounted(() => {
       map = new AMap.Map("map", {
         viewMode: "3D",
         // 设置地图容器id
-        zoom: 11, // 初始化地图级别
+        zoom:5, // 初始化地图级别
         center: [116.397428, 39.90923], // 初始化地图中心点位置
       });
     })
@@ -256,8 +256,8 @@ onUnmounted(() => {
   height: 50%;
 }
 #map {
-  width: 99%;
-  height: 98.5%;
+  width: 98%;
+  height: 98%;
   border-radius: 9px;
 }
 </style>
