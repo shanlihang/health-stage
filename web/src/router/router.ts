@@ -9,11 +9,11 @@ const router = createRouter({
         },
         {
             path:'/account',
-            component:import('../views/AccountCenter.vue')
+            component:() => import('../views/AccountCenter.vue')
         },
         {
             path:'/data',
-            component:import('../views/DataShow.vue')
+            component:() => import('../views/DataShow.vue')
         }
     ]
 })
