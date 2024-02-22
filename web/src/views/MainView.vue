@@ -92,7 +92,7 @@ const selectAccountCenter = () => {
 }
 .show{
     width: 98%;
-    height: 95%;
+    height: 93%;
     margin: 0 auto;
     background-color: brown;
 }
