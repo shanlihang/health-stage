@@ -1,32 +1,31 @@
 <script setup lang="ts">
-import { ref, reactive,onMounted,onUnmounted } from "vue";
-import { message } from 'ant-design-vue';
-import screenfull from 'screenfull'
+import { ref, reactive, onMounted, onUnmounted } from "vue";
+import { message } from "ant-design-vue";
+import screenfull from "screenfull";
 import AMapLoader from "@amap/amap-jsapi-loader";
 
 //判断是否全屏
-const flag = ref<boolean>(false)
+const flag = ref<boolean>(false);
 
 //定义ref变量
-const dataSection = ref(null)
+const dataSection = ref(null);
 
 //定义地图
 let map = null;
 
 //刷新数据
 const refresh = () => {
-  console.log('刷新数据');
-}
+  console.log("刷新数据");
+};
 //全屏显示
 const fullScreen = () => {
-  if(!screenfull.isEnabled){
-    message.error('该浏览器不支持全屏功能');
-  }else{
-    screenfull.toggle(dataSection.value)
-    flag.value = !flag.value
+  if (!screenfull.isEnabled) {
+    message.error("该浏览器不支持全屏功能");
+  } else {
+    screenfull.toggle(dataSection.value);
+    flag.value = !flag.value;
   }
-  
-}
+};
 
 onMounted(() => {
   AMapLoader.load({
@@ -62,7 +61,11 @@ onUnmounted(() => {
       ></bv-decorator>
       <div class="btns">
         <div class="refresh">
-          <a-tooltip placement="bottom" style="z-index:111" :getPopupContainer="(e) => e.parentNode">
+          <a-tooltip
+            placement="bottom"
+            style="z-index: 111"
+            :getPopupContainer="(e) => e.parentNode"
+          >
             <template #title>
               <span>刷新数据</span>
             </template>
@@ -75,11 +78,19 @@ onUnmounted(() => {
           </a-tooltip>
         </div>
         <div class="full">
-          <a-tooltip placement="bottom" :getPopupContainer="(e) => e.parentNode">
+          <a-tooltip
+            placement="bottom"
+            :getPopupContainer="(e) => e.parentNode"
+          >
             <template #title>
-              <span>{{ flag ? '退出全屏' : '全屏显示' }}</span>
+              <span>{{ flag ? "退出全屏" : "全屏显示" }}</span>
             </template>
-            <img @click="fullScreen" src="/src/assets/pic/header/full.svg" width="25" height="25" />
+            <img
+              @click="fullScreen"
+              src="/src/assets/pic/header/full.svg"
+              width="25"
+              height="25"
+            />
           </a-tooltip>
         </div>
       </div>
@@ -128,9 +139,13 @@ onUnmounted(() => {
             <bv-border-box name="border12"></bv-border-box>
           </div>
         </div>
-        <div class="map" id="map">
-          <div style="width: 100%;height:100%;">
-            <bv-border-box name="border10"></bv-border-box>
+        <div class="map">
+          <div style="width: 100%; height: 100%;">
+            <bv-border-box name="border10">
+              <div style="width:100%;height:100%;display:flex;justify-content: center;align-items: center;">
+                <div id="map"></div>
+              </div>
+            </bv-border-box>
           </div>
         </div>
         <div class="right">
@@ -178,7 +193,8 @@ onUnmounted(() => {
   position: absolute;
   right: 0;
 }
-.btns .refresh,.full {
+.btns .refresh,
+.full {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -192,20 +208,20 @@ onUnmounted(() => {
   height: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  
+  justify-content: space-around;
+  /* padding-bottom: 10px; */
 }
-.datas .fontData{
+.datas .fontData {
   height: 25%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.infoCard{
+.infoCard {
   width: 20%;
-  height: 90%; 
+  height: 90%;
 }
-.infoCard .child{
+.infoCard .child {
   width: 100%;
   height: 100%;
   display: flex;
@@ -213,30 +229,35 @@ onUnmounted(() => {
   align-items: center;
   justify-content: space-evenly;
 }
-.num{
+.num {
   font-size: 36px;
   font-weight: 900;
   color: crimson;
 }
-.chart{
-  height: 73%;
+.chart {
+  height: 70%;
   display: flex;
   justify-content: space-around;
 }
-.chart .left{
+.chart .left {
   width: 20%;
   height: 100%;
 }
-.chart .map{
+.chart .map {
   width: 50%;
   height: 100%;
 }
-.chart .right{
+.chart .right {
   width: 20%;
   height: 100%;
 }
-.chartItem{
+.chartItem {
   width: 100%;
   height: 50%;
+}
+#map {
+  width: 99%;
+  height: 98.5%;
+  border-radius: 9px;
 }
 </style>
