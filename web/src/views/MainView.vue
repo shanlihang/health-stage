@@ -82,6 +82,7 @@ const selectAccountCenter = () => {
     position: absolute;
     left:5%;
     top:8%;
+    background-color: rgba(214, 214, 214, 0.3);
 }
 .router{
     width: 98%;
@@ -94,7 +95,7 @@ const selectAccountCenter = () => {
     width: 98%;
     height: 93%;
     margin: 0 auto;
-    background-color: brown;
+    background-color: #fff;
 }
 .select{
     animation: changeBkg 0.2s linear forwards;
