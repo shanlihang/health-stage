@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, reactive,onMounted } from "vue";
+import { ref, reactive,onMounted,onUnmounted } from "vue";
 import { message } from 'ant-design-vue';
 import screenfull from 'screenfull'
+import AMapLoader from "@amap/amap-jsapi-loader";
 
 //判断是否全屏
 const flag = ref<boolean>(false)
@@ -9,7 +10,8 @@ const flag = ref<boolean>(false)
 //定义ref变量
 const dataSection = ref(null)
 
-
+//定义地图
+let map = null;
 
 //刷新数据
 const refresh = () => {
@@ -27,7 +29,27 @@ const fullScreen = () => {
 }
 
 onMounted(() => {
+  AMapLoader.load({
+    key: "cf9e9bc4d8c1e744c1298de4af957ad5", // 申请好的Web端开发者Key，首次调用 load 时必填
+    version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+    plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+  })
+    .then((AMap:any) => {
+      map = new AMap.Map("map", {
+        viewMode: "3D",
+        // 设置地图容器id
+        zoom: 11, // 初始化地图级别
+        center: [116.397428, 39.90923], // 初始化地图中心点位置
+      });
+    })
+    .catch((e:any) => {
+      console.log(e);
+    });
 })
+
+onUnmounted(() => {
+  map?.destroy();
+});
 </script>
 
 <template>
@@ -98,9 +120,27 @@ onMounted(() => {
         </div>
       </div>
       <div class="chart">
-        <div class="left"></div>
-        <div class="map"></div>
-        <div class="right"></div>
+        <div class="left">
+          <div class="chartItem">
+            <bv-border-box name="border12"></bv-border-box>
+          </div>
+          <div class="chartItem">
+            <bv-border-box name="border12"></bv-border-box>
+          </div>
+        </div>
+        <div class="map" id="map">
+          <div style="width: 100%;height:100%;">
+            <bv-border-box name="border10"></bv-border-box>
+          </div>
+        </div>
+        <div class="right">
+          <div class="chartItem">
+            <bv-border-box name="border12"></bv-border-box>
+          </div>
+          <div class="chartItem">
+            <bv-border-box name="border12"></bv-border-box>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -186,16 +226,17 @@ onMounted(() => {
 .chart .left{
   width: 20%;
   height: 100%;
-  background-color: #0fee34;
 }
 .chart .map{
   width: 50%;
   height: 100%;
-  background-color: aqua;
 }
 .chart .right{
   width: 20%;
   height: 100%;
-  background-color: rgb(240, 167, 11);
+}
+.chartItem{
+  width: 100%;
+  height: 50%;
 }
 </style>
