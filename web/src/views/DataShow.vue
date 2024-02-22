@@ -40,7 +40,7 @@ onMounted(() => {
       ></bv-decorator>
       <div class="btns">
         <div class="refresh">
-          <a-tooltip placement="bottom" style="z-index:111">
+          <a-tooltip placement="bottom" style="z-index:111" :getPopupContainer="(e) => e.parentNode">
             <template #title>
               <span>刷新数据</span>
             </template>
@@ -53,7 +53,7 @@ onMounted(() => {
           </a-tooltip>
         </div>
         <div class="full">
-          <a-tooltip placement="bottom">
+          <a-tooltip placement="bottom" :getPopupContainer="(e) => e.parentNode">
             <template #title>
               <span>{{ flag ? '退出全屏' : '全屏显示' }}</span>
             </template>
@@ -71,7 +71,6 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   color: #fff;
-  letter-spacing: 0.2rem;
   background: url("/src/assets/bkg.jpg") no-repeat;
   background-size: cover;
 }
@@ -88,7 +87,7 @@ onMounted(() => {
   font-weight: bold;
   height: 20px;
   position: absolute;
-  top: 8px;
+  top: 15px;
 }
 .btns {
   display: flex;
