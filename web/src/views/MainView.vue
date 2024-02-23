@@ -45,15 +45,17 @@ const selectAccountCenter = () => {
         <div class="router">
             <img src="/src/assets/pic/header/router.svg" width="20" height="20" style="margin-right:10px">
             <a-breadcrumb>
-                <a-breadcrumb-item>Home</a-breadcrumb-item>
                 <a-breadcrumb-item><a href="">Application Center</a></a-breadcrumb-item>
                 <a-breadcrumb-item><a href="">Application List</a></a-breadcrumb-item>
                 <a-breadcrumb-item>An Application</a-breadcrumb-item>
             </a-breadcrumb>
         </div>
-        <div class="show">
-            <RouterView></RouterView>
-        </div>
+        <a-watermark content="Ant Design Vue" style="width: 98%;;height: 94%;margin: 0 auto;">
+            <div class="show">
+                <RouterView></RouterView>
+            </div>
+        </a-watermark>
+        
         
     </div>
   </div>
@@ -92,11 +94,8 @@ const selectAccountCenter = () => {
     align-items: center;
 }
 .show{
-    width: 98%;
-    height: 94%;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 9px;
+    width: 100%;
+    height: 100%;
 }
 .select{
     animation: changeBkg 0.2s linear forwards;
