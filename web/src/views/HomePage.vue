@@ -22,6 +22,7 @@ const quickMenu = reactive<Array<QuickMenu>>([
   {id:2,name:'检测结果'},
   {id:3,name:'数据大屏'},
   {id:4,name:'检测结果'},
+  {id:5,name:'检测结果'},
 ])
 
 //点击悬浮按钮打开二维码弹窗

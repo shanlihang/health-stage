@@ -5,5 +5,14 @@ import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/reset.css';
 import BinDatav from 'bin-datav'
 import 'bin-datav/lib/styles/index.css'
+import {createPinia} from 'pinia'
 
-createApp(App).use(router).use(Antd).use(BinDatav).mount('#app')
+const pinia = createPinia()
+const app = createApp(App)
+
+app.use(router)
+app.use(Antd)
+app.use(BinDatav)
+app.use(pinia)
+
+app.mount('#app')

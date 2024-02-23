@@ -18,6 +18,14 @@ const router = createRouter({
         {
             path:'/dataOther',
             component:() => import('../views/DataShowOther.vue')
+        },
+        {
+            path:'/menuList',
+            component:() => import('../views/MenuList.vue')
+        },
+        {
+            path:'/setting',
+            component:() => import('../views/SystemSetting.vue')
         }
     ]
 })

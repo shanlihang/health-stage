@@ -1,25 +1,30 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import {ref,reactive} from 'vue'
+import {ref,reactive,onMounted} from 'vue'
 import MenuAside from '../components/layout/MenuAside.vue'
 import HeadAside from '../components/layout/HeadAside.vue'
 import MenuItem from '../components/base/MenuItem.vue'
+import {useSystemStore} from '../store/system.ts'
 
 interface menuList{
     id:number
     content:string,
     src:string,
+    router:string
 }
 
 const flag = ref<number>(1)
 
 const list:Array<menuList> = reactive([
-    {id:1,content:'首页',src:'/src/assets/pic/menus/index.svg'},
-    {id:2,content:'医疗管理',src:'/src/assets/pic/menus/list.svg'},
-    {id:3,content:'库存管理',src:'/src/assets/pic/menus/site.svg'},
-    {id:4,content:'系统设置',src:'/src/assets/pic/menus/settings.svg'},
-    {id:5,content:'数据大屏',src:'/src/assets/pic/menus/data.svg'}
+    {id:1,content:'首页',src:'/src/assets/pic/menus/index.svg',router:'/'},
+    {id:2,content:'医疗管理',src:'/src/assets/pic/menus/list.svg',router:'/menuList'},
+    {id:3,content:'库存管理',src:'/src/assets/pic/menus/site.svg',router:'/menuList'},
+    {id:4,content:'系统设置',src:'/src/assets/pic/menus/settings.svg',router:'/setting'},
+    {id:5,content:'数据大屏',src:'/src/assets/pic/menus/data.svg',router:'/menuList'}
 ])
+
+//定义pinia
+const store = useSystemStore()
 
 const selectMenu = (item:menuList) => {
     flag.value = item.id
@@ -29,13 +34,17 @@ const selectAccountCenter = () => {
     flag.value = 0
 }
 
+onMounted(() => {
+    
+})
+
 </script>
 
 <template>
   <div class="container">
     <div class="side">
         <MenuAside @chooseAccountCenter="selectAccountCenter">
-            <MenuItem :class="item.id == flag ? 'select' : ''" @click="selectMenu(item)" :content="item.content" :src="item.src" v-for="item in list" :key="item.id" />
+            <MenuItem :class="item.id == flag ? 'select' : ''" @click="selectMenu(item)" :content="item.content" :src="item.src" :router="item.router" :id="item.id" v-for="item in list" :key="item.id" />
         </MenuAside>
     </div>
     <div class="head">
@@ -50,13 +59,11 @@ const selectAccountCenter = () => {
                 <a-breadcrumb-item>An Application</a-breadcrumb-item>
             </a-breadcrumb>
         </div>
-        <a-watermark content="Ant Design Vue" style="width: 98%;;height: 94%;margin: 0 auto;">
+        <a-watermark :content="store.waterMark" style="width: 98%;;height: 94%;margin: 0 auto;">
             <div class="show">
                 <RouterView></RouterView>
             </div>
         </a-watermark>
-        
-        
     </div>
   </div>
 </template>

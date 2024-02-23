@@ -23,7 +23,7 @@ const props = defineProps({
 
 <style scoped>
 .cardItem{
-    width: 21%;
+    width: 18%;
     height: 50px;
     background-color: #fdfbfb;
     margin-top: 20px;
