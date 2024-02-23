@@ -82,7 +82,7 @@ const selectAccountCenter = () => {
     position: absolute;
     left:5%;
     top:8%;
-    background-color: rgba(214, 214, 214, 0.3);
+    background-color: #e6e6e6;
 }
 .router{
     width: 98%;
