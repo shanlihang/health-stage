@@ -14,6 +14,10 @@ const router = createRouter({
         {
             path:'/data',
             component:() => import('../views/DataShow.vue')
+        },
+        {
+            path:'/dataOther',
+            component:() => import('../views/DataShowOther.vue')
         }
     ]
 })

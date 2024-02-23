@@ -60,10 +60,27 @@ onUnmounted(() => {
         style="width: 50%; height: 100%"
       ></bv-decorator>
       <div class="btns">
+        <div class="toggle">
+          <a-tooltip
+            placement="bottom"
+            :getPopupContainer="(e) => e.parentNode"
+          >
+            <template #title>
+              <span>切换面板</span>
+            </template>
+            <router-link to="/dataOther">
+              <img
+              src="/src/assets/pic/header/toggle.svg"
+              width="30"
+              height="30"
+            />
+            </router-link>
+            
+          </a-tooltip>
+        </div>
         <div class="refresh">
           <a-tooltip
             placement="bottom"
-            style="z-index: 111"
             :getPopupContainer="(e) => e.parentNode"
           >
             <template #title>
@@ -188,13 +205,13 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 150px;
+  width: 200px;
   height: 100%;
   position: absolute;
   right: 0;
 }
 .btns .refresh,
-.full {
+.full,.toggle {
   width: 40px;
   height: 40px;
   border-radius: 50%;
