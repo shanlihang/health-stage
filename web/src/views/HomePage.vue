@@ -79,7 +79,7 @@ const scanModalhandle = () => {
 
     <a-modal v-model:open="scanOpen" :centered="true" okText="完成" cancelText="取消" title="扫码查看检测数据" @ok="scanModalhandle">
 
-        <a-alert message="注：用户扫码查看个人数据（需使用身份证号进行身份验证）" type="info" :closable="true"/>
+        <a-alert message="注：用户扫码查看个人数据（需使用身份证号进行身份验证）" type="info"/>
         <div class="imgs">
           <a-qrcode :value="text" />
           <img src="/src/assets/pic/other/scan.svg" width="150" height="150">
@@ -97,6 +97,7 @@ const scanModalhandle = () => {
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
+  overflow-y: scroll;
 }
 .quick{
   width: 96%;
