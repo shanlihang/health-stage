@@ -13,6 +13,9 @@ interface menuList{
     router:string
 }
 
+//控制flag显示哪个容器
+const showFlag = ref<boolean>(true)
+
 const flag = ref<number>(1)
 
 const list:Array<menuList> = reactive([
@@ -41,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" v-if="showFlag">
     <div class="side">
         <MenuAside @chooseAccountCenter="selectAccountCenter">
             <MenuItem :class="item.id == flag ? 'select' : ''" @click="selectMenu(item)" :content="item.content" :src="item.src" :router="item.router" :id="item.id" v-for="item in list" :key="item.id" />
@@ -65,6 +68,9 @@ onMounted(() => {
             </div>
         </a-watermark>
     </div>
+  </div>
+  <div class="container" v-if="!showFlag">
+    <router-view></router-view>
   </div>
 </template>
 
