@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref,reactive} from 'vue'
+import {ref,reactive,watch} from 'vue'
 
 interface Setwatermark{
     content:string,
@@ -12,6 +12,9 @@ const form = reactive<Setwatermark>({
     flag:true
 })
 
+//输入框是否禁用
+const disabled = ref<boolean>(false)
+
 //弹窗开关控制
 const open = ref<boolean>(false)
 
@@ -22,6 +25,20 @@ const toUpdate = () => {}
 const toShow = () => {
     open.value = true
 }
+
+watch(
+    () => form.flag,
+    (value,oldValue) => {
+        if(!value){
+            disabled.value = true
+            form.content = ''
+        } else {
+            disabled.value = false
+            form.content = ''
+        }
+        // console.log(value + '------' + oldValue);
+    }
+)
 
 //弹窗确认按钮
 const handleOk = () => {
@@ -35,7 +52,7 @@ const handleOk = () => {
         <div class="form">
         <a-form :model="form">
             <a-form-item label="水印文本">
-                <a-input v-model:value="form.content" style="width: 50%;" placeholder="请输入想要设置的水印文本"/>
+                <a-input v-model:value="form.content" style="width: 50%;" placeholder="请输入想要设置的水印文本" :disabled="disabled"/>
             </a-form-item>
             <a-form-item label="水印开关">
                 <a-switch v-model:checked="form.flag" />
