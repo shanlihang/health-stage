@@ -40,6 +40,8 @@ const onFinishFailed = () => {}
       label="账号"
       name="username"
       :rules="[{ required: true, message: '账号不能为空' }]"
+      :labelCol="{ style: 'width: 70px' }"
+      labelAlign="left"
     >
       <a-input v-model:value="formData.username" placeholder="请输入账号" />
     </a-form-item>
@@ -48,6 +50,8 @@ const onFinishFailed = () => {}
       label="密码"
       name="password"
       :rules="[{ required: true, message: '密码不能为空' }]"
+      :labelCol="{ style: 'width: 70px' }"
+      labelAlign="left"
     >
       <a-input-password v-model:value="formData.password" placeholder="请输入密码" />
     </a-form-item>
@@ -55,9 +59,12 @@ const onFinishFailed = () => {}
       label="验证码"
       name="password"
       :rules="[{ required: true, message: '验证码不能为空' }]"
+      :labelCol="{ style: 'width: 70px' }"
+      labelAlign="left"
+      style="position: relative;"
     >
       <a-input style="width: 50%;" v-model:value="formData.code" placeholder="请输入验证码" />
-      <div class="codeArea"></div>
+      <div class="codeArea" style="position: absolute;right: 0;top: 0;"></div>
     </a-form-item>
 
     <a-form-item>
@@ -73,7 +80,6 @@ const onFinishFailed = () => {}
 .container{
   width: 100%;
   height: 100%;
-  border-radius: 9px;
   background: url('/src/assets/login-bkg.jpg') no-repeat;
   background-size: cover;
   overflow: hidden;
@@ -83,7 +89,7 @@ const onFinishFailed = () => {}
 }
 .login{
   width: 700px;
-  height: 400px;
+  height: 350px;
   background-color: aliceblue;
   border-radius: 9px;
   background: url('/src/assets/login.png') no-repeat;
@@ -91,9 +97,9 @@ const onFinishFailed = () => {}
 }
 
 .login .form{
-  width: 50%;
+  width: 45%;
   height: 100%;
-
+  margin-left: 5%;
 }
 .login .title{
   font-size: 24px;
@@ -101,10 +107,11 @@ const onFinishFailed = () => {}
   letter-spacing: 0.1rem;
   text-align: center;
   padding-top: 20px;
+  margin-top: 20px;
 }
 .codeArea{
-  width: 50%;
-  height: 20px;
+  width: 40%;
+  height: 100%;
   background-color: aqua;
 }
 </style>

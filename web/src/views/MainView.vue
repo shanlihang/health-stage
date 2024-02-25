@@ -38,6 +38,10 @@ const selectAccountCenter = () => {
 }
 
 onMounted(() => {
+    if(location.pathname == '/login'){
+        showFlag.value = !showFlag.value
+    }
+    console.log(location.pathname);
     
 })
 
