@@ -10,24 +10,6 @@ interface MenuItem{
 
 const props = defineProps<MenuItem>()
 
-//获取路由对象
-const router = useRouter()
-
-//路由跳转事件
-const urlToggle = (id:number) => {
-  if(props.router == '/'){
-    router.push('/')
-  }else if(props.router == '/setting'){
-    router.push('/setting')
-  } else {
-    router.push({
-      path:props.router,
-      query:{
-        id:props.id
-      }
-    })
-  }
-}
 </script>
 
 <template>
@@ -36,7 +18,10 @@ const urlToggle = (id:number) => {
         <template #title>
           <span>{{ props.content }}</span>
         </template>
-        <img :src="props.src" width="40px" height="40px" @click="urlToggle(props.id)">
+        <router-link :to="props.router">
+          <img :src="props.src" width="40px" height="40px">
+        </router-link>
+        
       </a-tooltip>
   </div>
 </template>

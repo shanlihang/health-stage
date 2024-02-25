@@ -20,10 +20,10 @@ const flag = ref<number>(1)
 
 const list:Array<menuList> = reactive([
     {id:1,content:'首页',src:'/src/assets/pic/menus/index.svg',router:'/'},
-    {id:2,content:'医疗管理',src:'/src/assets/pic/menus/list.svg',router:'/menuList'},
-    {id:3,content:'库存管理',src:'/src/assets/pic/menus/site.svg',router:'/menuList'},
+    {id:2,content:'医疗管理',src:'/src/assets/pic/menus/list.svg',router:'/medical'},
+    {id:3,content:'库存管理',src:'/src/assets/pic/menus/site.svg',router:'/inventory'},
     {id:4,content:'系统设置',src:'/src/assets/pic/menus/settings.svg',router:'/setting'},
-    {id:5,content:'数据大屏',src:'/src/assets/pic/menus/data.svg',router:'/menuList'}
+    {id:5,content:'数据大屏',src:'/src/assets/pic/menus/data.svg',router:'/data'}
 ])
 
 //定义pinia

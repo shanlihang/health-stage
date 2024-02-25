@@ -25,12 +25,16 @@ const router = createRouter({
             component:() => import('../views/DataShowOther.vue')
         },
         {
-            path:'/menuList',
-            component:() => import('../views/MenuList.vue')
+            path:'/medical',
+            component:() => import('../views/MedicalManage.vue')
         },
         {
             path:'/setting',
             component:() => import('../views/SystemSetting.vue')
+        },
+        {
+            path:'/inventory',
+            component:() => import('../views/InventoryManage.vue')
         }
     ]
 })
