@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ref,reactive} from 'vue'
+import GoodsManage from '/src/components/inventory/GoodsManage.vue'
 
 interface Goods{
     name:string
@@ -17,9 +18,9 @@ const activeKey = ref<number>(1)
     <a-tabs
       v-model:activeKey="activeKey"
       tab-position="left"
-      :style="{ height: '100%' }"
+      :style="{ height: '100%'}"
     >
-        <a-tab-pane :key="1" tab="物品操作">456</a-tab-pane>
+        <a-tab-pane :key="1" tab="物品操作"><GoodsManage /></a-tab-pane>
         <a-tab-pane :key="2" tab="物品管理">123</a-tab-pane>
         <a-tab-pane :key="3" tab="操作记录">789</a-tab-pane>
     </a-tabs>
@@ -54,16 +55,6 @@ const activeKey = ref<number>(1)
   height: 100%;
   border-radius: 9px;
   background-color: #fff;
-}
-.search{
-    height: 5%;
-    width: 98%;
-    margin: 0 auto;
-    background-color: aqua;
-}
-.action{
-    
-    margin: 20px 20px 0;
-    background-color: aqua;
+  overflow-y: scroll;
 }
 </style>
