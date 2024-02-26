@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {reactive} from 'vue'
+import {ref,reactive} from 'vue'
 
 interface Goods{
     name:string
@@ -7,11 +7,26 @@ interface Goods{
 const formData = reactive<Goods>({
     name:''
 })
+
+//当前激活选项卡
+const activeKey = ref<number>(1)
 </script>
 
 <template>
   <div class="container">
-    <div class="search">
+    <a-tabs
+      v-model:activeKey="activeKey"
+      tab-position="left"
+      :style="{ height: '100%' }"
+    >
+      <a-tab-pane v-for="i in 30" :key="i" :tab="`Tab-${i}`">Content of tab {{ i }}</a-tab-pane>
+    </a-tabs>
+
+
+
+
+
+    <!-- <div class="search">
         <a-form layout="inline" :model="formData">
             <a-form-item label="物品名称">
                 <a-input v-model:value="formData.name" placeholder="请输入物品名称" />
@@ -27,7 +42,7 @@ const formData = reactive<Goods>({
     </div>
     <div class="table">
 
-    </div>
+    </div> -->
   </div>
 </template>
 

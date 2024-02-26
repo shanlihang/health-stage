@@ -2,7 +2,7 @@
 import {ref} from 'vue'
 import SetWaterMark from '/src/components/system/SetWaterMark.vue'
 
-//选项卡激活页面
+//当前激活选项卡
 const activeKey = ref<number>(1)
 </script>
 
@@ -12,10 +12,9 @@ const activeKey = ref<number>(1)
     <a-tabs
       v-model:activeKey="activeKey"
       tab-position="left"
-      size="large"
-      :style="{ width:'100%',height:'100%'}"
+      :style="{height:'100%'}"
     >
-    <a-tab-pane tab="水印设置"><SetWaterMark /></a-tab-pane>
+    <a-tab-pane tab="水印设置" :key="1"><SetWaterMark /></a-tab-pane>
     </a-tabs>
   </div>
 </template>
