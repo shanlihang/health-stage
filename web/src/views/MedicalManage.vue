@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ref,onMounted} from 'vue'
+import CommunityManage from '/src/components/medical/CommunityManage.vue'
 
 //当前激活的选项卡
 const activeKey = ref<number>(1)
@@ -16,7 +17,7 @@ onMounted(() => {
       tab-position="left"
       :style="{ height: '100%' }"
     >
-      <a-tab-pane v-for="i in 30" :key="i" :tab="`Tab-${i}`">Content of tab {{ i }}</a-tab-pane>
+      <a-tab-pane :key="1" tab="社区管理"><CommunityManage /></a-tab-pane>
     </a-tabs>
   </div>
 </template>
