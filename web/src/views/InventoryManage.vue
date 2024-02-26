@@ -19,7 +19,9 @@ const activeKey = ref<number>(1)
       tab-position="left"
       :style="{ height: '100%' }"
     >
-      <a-tab-pane v-for="i in 30" :key="i" :tab="`Tab-${i}`">Content of tab {{ i }}</a-tab-pane>
+        <a-tab-pane :key="1" tab="物品操作">456</a-tab-pane>
+        <a-tab-pane :key="2" tab="物品管理">123</a-tab-pane>
+        <a-tab-pane :key="3" tab="操作记录">789</a-tab-pane>
     </a-tabs>
 
 
