@@ -23,7 +23,6 @@ const activeKey = ref<number>(1)
 .container{
   width: 100%;
   height: 100%;
-  border-radius: 9px;
   background-color: #fff;
 }
 </style>

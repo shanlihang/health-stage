@@ -97,7 +97,6 @@ const scanModalhandle = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 9px;
   overflow-y: scroll;
 }
 .quick{

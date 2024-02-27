@@ -4,6 +4,7 @@ import {ref,reactive} from 'vue'
 //搜索表单接口定义
 interface SearchForm{
     name:string,
+    remark:string,
     currentPage:number,
     pageSize:number
 }
@@ -19,6 +20,7 @@ interface Goods{
 //搜索框表单
 const searchForm = reactive<SearchForm>({
     name:'',
+    remark:'',
     currentPage:1,
     pageSize:20
 })
@@ -93,6 +95,146 @@ const data = [
     num: 32,
     unit:'个',
     remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 1,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 2,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 3,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 4,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 5,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 1,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 2,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 3,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 4,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 5,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 1,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 2,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 3,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 4,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 5,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 1,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 2,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 3,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 4,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
+  },
+  {
+    id: 5,
+    name: 'John Brown',
+    num: 32,
+    unit:'个',
+    remark: 'New York No. 1 Lake Park',
   }
 ];
 
@@ -106,7 +248,7 @@ const handleFinishFailed = () => {}
 const onShowSizeChange = () => {}
 
 //编辑按钮
-const editGoods = (record) => {
+const editGoods = (record:Goods) => {
     openUpdateGoods.value = true;
     updateGoods.name = record.name;
     updateGoods.num = record.num;
@@ -115,7 +257,7 @@ const editGoods = (record) => {
 }
 
 //确认删除
-const deleteGoods = (record) => {
+const deleteGoods = (record:Goods) => {
     console.log(record);
 }
 
@@ -167,6 +309,9 @@ const resetAddForm = () => {
             <a-form layout="inline" :model="searchForm" @finish="handleFinish" @finishFailed="handleFinishFailed">
                 <a-form-item label="物品名称">
                     <a-input v-model:value="searchForm.name" placeholder="请输入物品名称" />
+                </a-form-item>
+                <a-form-item label="物品备注">
+                    <a-input v-model:value="searchForm.remark" placeholder="请输入物品备注" />
                 </a-form-item>
                 <a-form-item>
                     <a-button type="primary">搜索</a-button>
