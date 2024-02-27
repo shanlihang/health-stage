@@ -31,15 +31,16 @@ onMounted(() => {
   AMapLoader.load({
     key: "cf9e9bc4d8c1e744c1298de4af957ad5", // 申请好的Web端开发者Key，首次调用 load 时必填
     version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
-    plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
   })
     .then((AMap:any) => {
       map = new AMap.Map("map", {
         viewMode: "3D",
         // 设置地图容器id
-        zoom:5, // 初始化地图级别
-        center: [116.397428, 39.90923], // 初始化地图中心点位置
+        zoom:14, // 初始化地图级别
+        mapStyle: "amap://styles/darkblue",
+        center: [116.917177,36.672156], // 初始化地图中心点位置，不加会定位到当前城市
       });
+      //此处添加插件
     })
     .catch((e:any) => {
       console.log(e);
