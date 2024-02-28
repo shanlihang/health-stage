@@ -18,6 +18,8 @@ onMounted(() => {
       :style="{ height: '100%' }"
     >
       <a-tab-pane :key="1" tab="社区管理"><CommunityManage /></a-tab-pane>
+      <a-tab-pane :key="2" tab="人员管理">人员管理</a-tab-pane>
+      <a-tab-pane :key="3" tab="结果管理">结果管理</a-tab-pane>
     </a-tabs>
   </div>
 </template>
