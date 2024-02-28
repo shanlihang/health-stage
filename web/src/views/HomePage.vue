@@ -18,14 +18,6 @@ const dataCard = reactive([
   {title:'今日检测人数',value:10},
 ])
 
-//地图原点坐标
-const mapCircle = reactive([
-  {row:116.897468,col:36.718323},
-  {row:116.947781,col:36.684456},
-  {row:116.811754,col:40.208198}
-
-])
-
 //二维码弹窗
 const scanOpen = ref<boolean>(false);
 

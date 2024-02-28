@@ -15,6 +15,7 @@ const activeKey = ref<number>(1)
       :style="{height:'100%'}"
     >
     <a-tab-pane tab="水印设置" :key="1"><SetWaterMark /></a-tab-pane>
+    <a-tab-pane tab="位置设置" :key="2">更改我的位置</a-tab-pane>
     </a-tabs>
   </div>
 </template>
