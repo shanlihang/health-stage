@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import LastMenu from "/src/components/base/LastMenu.vue";
-import { ref, reactive } from "vue";
+import { ref, reactive,onMounted } from "vue";
 import { ScanOutlined } from "@ant-design/icons-vue";
-
-//快捷访问菜单接口
-interface QuickMenu {
-  id: number;
-  name: string;
-  src?: string;
-}
+import {getCurrentAddress} from '../api/system/index'
 
 //数据卡片信息
 const dataCard = reactive([
@@ -33,6 +26,10 @@ const openScanModal = () => {
 const scanModalhandle = () => {
   scanOpen.value = false;
 };
+
+onMounted(() => {
+  console.log(getCurrentAddress())
+})
 </script>
 
 <template>
