@@ -1,9 +1,9 @@
 import service from '../../utils/request'
 
-//测试跨域
-export function getCurrentAddress(){
+//获取系统菜单
+export function getMenuList(){
     return service({
-        url:'/system/getMenu',
-        method:'get',
+        url:'/system/menu',
+        method:'get'
     })
 }

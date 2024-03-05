@@ -28,7 +28,6 @@ const scanModalhandle = () => {
 };
 
 onMounted(() => {
-  console.log(getCurrentAddress())
 })
 </script>
 

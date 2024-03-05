@@ -5,12 +5,16 @@ import MenuAside from '../components/layout/MenuAside.vue'
 import HeadAside from '../components/layout/HeadAside.vue'
 import MenuItem from '../components/base/MenuItem.vue'
 import {useSystemStore} from '../store/system.ts'
+import {getMenuList} from '../api/system/index.ts'
 
 interface menuList{
-    id:number
-    content:string,
-    src:string,
-    router:string
+    ID:number
+    name:string,
+    icon:string,
+    router:string,
+    createAt:string,
+    updateAt:string,
+    deletedAt:string
 }
 
 //控制flag显示哪个容器
@@ -18,13 +22,7 @@ const showFlag = ref<boolean>(true)
 
 const flag = ref<number>(1)
 
-const list:Array<menuList> = reactive([
-    {id:1,content:'首页',src:'/src/assets/pic/menus/index.svg',router:'/'},
-    {id:2,content:'医疗管理',src:'/src/assets/pic/menus/list.svg',router:'/medical'},
-    {id:3,content:'库存管理',src:'/src/assets/pic/menus/site.svg',router:'/inventory'},
-    {id:4,content:'系统设置',src:'/src/assets/pic/menus/settings.svg',router:'/setting'},
-    {id:5,content:'数据大屏',src:'/src/assets/pic/menus/data.svg',router:'/data'}
-])
+const list:Array<menuList> = reactive([])
 
 //定义pinia
 const store = useSystemStore()
@@ -37,10 +35,19 @@ const selectAccountCenter = () => {
     flag.value = 0
 }
 
+const initData = () => {
+    getMenuList().then(res => {
+        res.data.list.forEach(element => {
+            list.push(element)
+        });
+    })
+}
+
 onMounted(() => {
     if(location.pathname == '/login'){
         showFlag.value = !showFlag.value
     }
+    initData()
 })
 
 </script>
@@ -49,7 +56,7 @@ onMounted(() => {
   <div class="container" v-if="showFlag">
     <div class="side">
         <MenuAside @chooseAccountCenter="selectAccountCenter">
-            <MenuItem :class="item.id == flag ? 'select' : ''" @click="selectMenu(item)" :content="item.content" :src="item.src" :router="item.router" :id="item.id" v-for="item in list" :key="item.id" />
+            <MenuItem :class="item.ID == flag ? 'select' : ''" @click="selectMenu(item)" :content="item.name" :src="item.icon" :router="item.router" :id="item.ID" v-for="item in list" :key="item.ID" />
         </MenuAside>
     </div>
     <div class="head">
