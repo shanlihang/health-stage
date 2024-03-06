@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="container">
+  <div class="section">
     <div class="title">
         {{ props.title }}
     </div>
@@ -15,7 +15,7 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.container{
+.section{
     width: 100%;
     height: 100%;
     display: flex;
