@@ -77,8 +77,10 @@ const addCommunityModal = ref<boolean>(false);
 const detailDrawerFlag = ref<boolean>(false);
 
 //打开社区详情按钮点击事件
-const openDetail = () => {
+const openDetail = (record) => {
   detailDrawerFlag.value = true;
+  console.log(record);
+  
 }
 
 //分页数据改变时触发
@@ -182,7 +184,7 @@ onUnmounted(() => {});
 
                 <a-table-column align="center" title="操作">
                     <template #default="{record}">
-                        <a-button type="link" primary @click="openDetail">详情</a-button>
+                        <a-button type="link" primary @click="openDetail(record)">详情</a-button>
                         <a-button type="link" style="color: orange;">编辑</a-button>
                         <a-popconfirm title="确认删除该记录吗？" ok-text="确认" cancel-text="取消" @confirm="deleteGoods(record)">
                             <a-button type="link" danger>删除</a-button>
