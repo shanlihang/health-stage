@@ -14,7 +14,7 @@ import (
 
 func main() {
 
-	dsn := "root:123456@tcp(127.0.0.1:3306)/wldz?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:67490009@tcp(127.0.0.1:3306)/wldz?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
@@ -35,5 +35,6 @@ func main() {
 	}
 	router.LoadSystemRouter(r)
 	router.LoadMedicalRouter(r)
+	router.LoadStoreRouter(r)
 	r.Run(":9090")
 }

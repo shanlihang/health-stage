@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import {ref,reactive} from 'vue'
+import {insertGoods,selectGoodsList} from '../../api/inventory'
+import {ref,reactive,onMounted} from 'vue'
 
 //搜索表单接口定义
 interface SearchForm{
@@ -12,7 +13,7 @@ interface SearchForm{
 //新增物品接口定义
 interface Goods{
     name:string,
-    num:number,
+    num:number | undefined,
     uint:string
     remark:string
 }
@@ -31,7 +32,7 @@ const centered = ref<boolean>(true)
 //新增物品表单
 const addGoods = reactive<Goods>({
     name:'',
-    num:0,
+    num:undefined,
     uint:'',
     remark:''
 })
@@ -39,7 +40,7 @@ const addGoods = reactive<Goods>({
 //编辑物品表单
 const updateGoods = reactive<Goods>({
     name:'',
-    num:0,
+    num:undefined,
     uint:'',
     remark:''
 })
@@ -60,183 +61,7 @@ const table_page = ref<boolean>(false)
 const pageSizeOptions = ref<Array<string>>(['10','20','50','100'])
 
 //表格数据
-const data = [
-  {
-    id: 1,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 2,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 3,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 4,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 5,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 1,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 2,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 3,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 4,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 5,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 1,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 2,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 3,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 4,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 5,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 1,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 2,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 3,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 4,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 5,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 1,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 2,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 3,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 4,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  },
-  {
-    id: 5,
-    name: 'John Brown',
-    num: 32,
-    unit:'个',
-    remark: 'New York No. 1 Lake Park',
-  }
-];
+const data = reactive([])
 
 //搜索框表单提交成功
 const handleFinish = () => {}
@@ -268,6 +93,10 @@ const addNewGoods = () => {
 
 //添加弹窗中的确认
 const addGoodsOk = () => {
+  insertGoods(addGoods).then(res => {
+    console.log(res);
+    
+  })
     if(addGoods.num != 0){
         console.log('新增+入库');
     }else{
@@ -301,6 +130,19 @@ const resetAddForm = () => {
     addGoods.uint = '';
     addGoods.remark = ''
 }
+
+const initData = () => {
+  selectGoodsList().then(res => {
+    res.data.list.forEach(element => {
+      data.push(element)
+    });
+    
+  })
+}
+
+onMounted(() => {
+  initData()
+})
 </script>
 
 <template>
@@ -324,14 +166,14 @@ const resetAddForm = () => {
         </div>
         <div class="table">
             <a-table :data-source="data" :bordered="bordered" :pagination="table_page" size="small">
-                <a-table-column align="center" title="序号" data-index="id" />
-                <a-table-column align="center" title="物品名称" data-index="name" />
+                <a-table-column align="center" title="序号" data-index="ID" />
+                <a-table-column align="center" title="物品名称" data-index="Name" />
                 <a-table-column align="center" title="物品余量">
                     <template #default="{record}">
-                        {{ record.num }} ({{ record.unit }}) 
+                        {{ record.Nums }} ({{ record.Divide }}) 
                     </template>
                 </a-table-column>
-                <a-table-column align="center" title="物品备注" data-index="remark" />
+                <a-table-column align="center" title="物品备注" data-index="Remark" />
                 <a-table-column align="center" title="操作">
                     <template #default="{record}">
                         <a-button type="link" primary @click="editGoods(record)">编辑</a-button>
