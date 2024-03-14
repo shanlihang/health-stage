@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import {insertGoods,selectGoodsList} from '../../api/inventory'
+import {insertGoods,selectGoodsList,deleteGoods} from '../../api/inventory'
 import {ref,reactive,onMounted} from 'vue'
+import service from '../../utils/request';
 
 //搜索表单接口定义
 interface SearchForm{
@@ -82,8 +83,13 @@ const editGoods = (record:Goods) => {
 }
 
 //确认删除
-const deleteGoods = (record:Goods) => {
+const deleteGoods = (record) => {
     console.log(record);
+    deleteGoods(record.ID).then(res => {
+        console.log(res);
+        
+    })
+    
 }
 
 //点击新增物品按钮事件
@@ -93,11 +99,10 @@ const addNewGoods = () => {
 
 //添加弹窗中的确认
 const addGoodsOk = () => {
-  insertGoods(addGoods).then(res => {
-    console.log(res);
-    
-  })
-    if(addGoods.num != 0){
+//   insertGoods(addGoods).then(res => {
+//     console.log(res);
+//   })
+    if(addGoods.num != undefined){
         console.log('新增+入库');
     }else{
         console.log('新增');
@@ -125,10 +130,10 @@ const updateGoodsCancel = () => {
 }
 
 const resetAddForm = () => {
-    addGoods.num = 0;
+    addGoods.num = undefined;
     addGoods.name = '';
     addGoods.uint = '';
-    addGoods.remark = ''
+    addGoods.remark = '';
 }
 
 const initData = () => {

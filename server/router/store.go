@@ -1,19 +1,21 @@
 package router
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
-	"server/middleware"
 	"server/service"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func LoadStoreRouter(e *gin.Engine) {
 
 	r := e.Group("/store")
-	r.Use(middleware.Cors())
+	r.Use(cors.Default())
 	{
 		r.GET("/goods", service.GetGoodsList)
 		r.POST("/addGoods", service.AddGoods)
+		r.DELETE("/deleteGoods", service.DropGoods)
 		r.GET("/a", func(ctx *gin.Context) {
 			ctx.JSON(http.StatusOK, gin.H{
 				"code": 0,

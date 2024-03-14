@@ -1,16 +1,17 @@
 package router
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
-	"server/middleware"
 	"server/service"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func LoadSystemRouter(e *gin.Engine) {
 
 	r := e.Group("/system")
-	r.Use(middleware.Cors())
+	r.Use(cors.Default())
 	{
 		r.GET("/menu", service.GetMenuList)
 		r.GET("/login", func(ctx *gin.Context) {

@@ -3,12 +3,19 @@ package dao
 import (
 	"server/global"
 	"server/model"
+
+	"gorm.io/gorm"
 )
 
 func SelectGoods() *[]model.Goods {
 	goods := &[]model.Goods{}
 	global.DB.Find(goods)
 	return goods
+}
+
+func DeleteGoods(ID string) *gorm.DB {
+	row := global.DB.Where("ID = ?", ID).Delete(&model.Goods{})
+	return row
 }
 
 func InsertGoods(name, remark, divide string, nums int) {

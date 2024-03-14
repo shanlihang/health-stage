@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/gin-gonic/gin"
 	"server/dao"
-	"strconv"
+
+	"github.com/gin-gonic/gin"
 )
 
 func GetGoodsList(ctx *gin.Context) {
@@ -12,16 +12,16 @@ func GetGoodsList(ctx *gin.Context) {
 	})
 }
 
+func DropGoods(ctx *gin.Context) {
+	id := ctx.Query("ID")
+	ctx.JSON(200, gin.H{
+		"result": dao.DeleteGoods(id),
+	})
+}
+
 func AddGoods(ctx *gin.Context) {
-	name := ctx.PostForm("name")
-	nums, err := strconv.Atoi(ctx.PostForm("nums"))
-	devide := ctx.PostForm("uint")
-	remark := ctx.PostForm("remark")
-	if err != nil {
-		panic("转换整数失败")
-		return
-	}
-	dao.InsertGoods(name, remark, devide, nums)
+	// ctx.Params
+	// dao.InsertGoods(name, remark, devide, nums)
 	ctx.JSON(200, gin.H{
 		"msg": "插入成功",
 	})

@@ -4,7 +4,7 @@ import service from '../../utils/request'
 export function insertGoods(data){
     return service({
         url:'/store/addGoods',
-        method:'POST',
+        method:'post',
         data:data
     })
 }
@@ -14,5 +14,14 @@ export function selectGoodsList(){
     return service({
         url:'/store/goods',
         method:'get'
+    })
+}
+
+//删除一个物品
+export function deleteGoods(params){
+    return service({
+        url:'/store/delete',
+        method:'delete',
+        params
     })
 }
