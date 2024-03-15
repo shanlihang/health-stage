@@ -13,15 +13,14 @@ func GetGoodsList(ctx *gin.Context) {
 }
 
 func DropGoods(ctx *gin.Context) {
-	id := ctx.Query("ID")
+	id := ctx.Param("ID")
+	println(id)
 	ctx.JSON(200, gin.H{
 		"result": dao.DeleteGoods(id),
 	})
 }
 
 func AddGoods(ctx *gin.Context) {
-	// ctx.Params
-	// dao.InsertGoods(name, remark, devide, nums)
 	ctx.JSON(200, gin.H{
 		"msg": "插入成功",
 	})

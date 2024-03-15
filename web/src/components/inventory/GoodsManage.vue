@@ -83,13 +83,13 @@ const editGoods = (record:Goods) => {
 }
 
 //确认删除
-const deleteGoods = (record) => {
-    console.log(record);
-    deleteGoods(record.ID).then(res => {
-        console.log(res);
-        
-    })
-    
+const confirmDelete = (record) => {
+    deleteGoods({ID:record.ID}).then(
+        res => {
+            console.log(res);
+            
+        }
+    )
 }
 
 //点击新增物品按钮事件
@@ -182,7 +182,7 @@ onMounted(() => {
                 <a-table-column align="center" title="操作">
                     <template #default="{record}">
                         <a-button type="link" primary @click="editGoods(record)">编辑</a-button>
-                        <a-popconfirm title="确认删除该记录吗？" ok-text="确认" cancel-text="取消" @confirm="deleteGoods(record)">
+                        <a-popconfirm title="确认删除该记录吗？" ok-text="确认" cancel-text="取消" @confirm="confirmDelete(record)">
                             <a-button type="link" danger>删除</a-button>
                         </a-popconfirm>
                         

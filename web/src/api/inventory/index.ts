@@ -5,7 +5,7 @@ export function insertGoods(data){
     return service({
         url:'/store/addGoods',
         method:'post',
-        data:data
+        data
     })
 }
 
@@ -18,10 +18,10 @@ export function selectGoodsList(){
 }
 
 //删除一个物品
-export function deleteGoods(params){
+export function deleteGoods(data){
     return service({
-        url:'/store/delete',
+        url:'/store/deleteGoods',
         method:'delete',
-        params
+        data
     })
 }

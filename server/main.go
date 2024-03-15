@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -24,6 +25,7 @@ func main() {
 	global.DB = db
 
 	r := gin.Default()
+	r.Use(cors.Default())
 	r1 := r.Group("/")
 	{
 		r1.GET("/test", func(ctx *gin.Context) {
