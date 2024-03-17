@@ -10,18 +10,19 @@ export function insertGoods(data){
 }
 
 //获取物品列表
-export function selectGoodsList(){
+export function selectGoodsList(params){
     return service({
         url:'/store/goods',
-        method:'get'
+        method:'get',
+        params
     })
 }
 
 //删除一个物品
-export function deleteGoods(data){
+export function deleteGoods(params){
     return service({
         url:'/store/deleteGoods',
         method:'delete',
-        data
+        params
     })
 }

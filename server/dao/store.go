@@ -13,7 +13,7 @@ func SelectGoods() *[]model.Goods {
 	return goods
 }
 
-func DeleteGoods(ID string) *gorm.DB {
+func DeleteGoods(ID int64) *gorm.DB {
 	row := global.DB.Where("ID = ?", ID).Delete(&model.Goods{})
 	return row
 }

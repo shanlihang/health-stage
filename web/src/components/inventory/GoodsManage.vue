@@ -11,11 +11,11 @@ interface SearchForm{
     pageSize:number
 }
 
-//新增物品接口定义
+//新增/编辑 物品接口定义
 interface Goods{
     name:string,
-    num:number | undefined,
-    uint:string
+    num:number,
+    divide:string
     remark:string
 }
 
@@ -33,16 +33,16 @@ const centered = ref<boolean>(true)
 //新增物品表单
 const addGoods = reactive<Goods>({
     name:'',
-    num:undefined,
-    uint:'',
+    num:0,
+    divide:'',
     remark:''
 })
 
 //编辑物品表单
 const updateGoods = reactive<Goods>({
     name:'',
-    num:undefined,
-    uint:'',
+    num:0,
+    divide:'',
     remark:''
 })
 
@@ -78,7 +78,7 @@ const editGoods = (record:Goods) => {
     openUpdateGoods.value = true;
     updateGoods.name = record.name;
     updateGoods.num = record.num;
-    updateGoods.uint = record.uint;
+    updateGoods.divide = record.divide;
     updateGoods.remark = record.remark
 }
 
@@ -99,9 +99,9 @@ const addNewGoods = () => {
 
 //添加弹窗中的确认
 const addGoodsOk = () => {
-//   insertGoods(addGoods).then(res => {
-//     console.log(res);
-//   })
+    insertGoods(addGoods).then(res => {
+        console.log(res);
+    })
     if(addGoods.num != undefined){
         console.log('新增+入库');
     }else{
@@ -130,18 +130,17 @@ const updateGoodsCancel = () => {
 }
 
 const resetAddForm = () => {
-    addGoods.num = undefined;
+    addGoods.num = 0;
     addGoods.name = '';
-    addGoods.uint = '';
+    addGoods.divide = '';
     addGoods.remark = '';
 }
 
 const initData = () => {
-  selectGoodsList().then(res => {
+  selectGoodsList(searchForm).then(res => {
     res.data.list.forEach(element => {
       data.push(element)
     });
-    
   })
 }
 
@@ -210,7 +209,7 @@ onMounted(() => {
                     <a-input-number v-model="addGoods.num" :min="0"></a-input-number>
                 </a-form-item>
                 <a-form-item label="物品单位">
-                    <a-input v-model="addGoods.uint"></a-input>
+                    <a-input v-model="addGoods.divide"></a-input>
                 </a-form-item>
                 <a-form-item label="物品备注">
                     <a-input v-model="addGoods.remark"></a-input>
@@ -219,18 +218,18 @@ onMounted(() => {
         </a-modal>
 
         <a-modal v-model:open="openUpdateGoods" title="编辑物品信息" @ok="updateGoodsOk" @cancel="updateGoodsCancel" :centered="centered" cancelText="取消" okText="确认">
-            <a-form :model="addGoods">
+            <a-form :model="updateGoods">
                 <a-form-item label="物品名称">
-                    <a-input v-model="addGoods.name"></a-input>
+                    <a-input v-model="updateGoods.name"></a-input>
                 </a-form-item>
                 <a-form-item label="物品数量">
-                    <a-input-number v-model="addGoods.num" :min="0"></a-input-number>
+                    <a-input-number v-model="updateGoods.num" :min="0"></a-input-number>
                 </a-form-item>
                 <a-form-item label="物品单位">
-                    <a-input v-model="addGoods.uint"></a-input>
+                    <a-input v-model="updateGoods.divide"></a-input>
                 </a-form-item>
                 <a-form-item label="物品备注">
-                    <a-input v-model="addGoods.remark"></a-input>
+                    <a-input v-model="updateGoods.remark"></a-input>
                 </a-form-item>
             </a-form>
         </a-modal>
