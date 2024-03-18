@@ -19,7 +19,7 @@ func GetGoodsList(ctx *gin.Context) {
 	})
 }
 
-func DropGoods(ctx *gin.Context) {
+func DeleteGoods(ctx *gin.Context) {
 	id, err := strconv.ParseInt(ctx.Query("ID"), 10, 64)
 	if err != nil {
 		return
@@ -29,7 +29,7 @@ func DropGoods(ctx *gin.Context) {
 	})
 }
 
-func AddGoods(ctx *gin.Context) {
+func PostGoods(ctx *gin.Context) {
 
 	// name := ctx.Query("name")
 	// remark := ctx.Query("remark")
