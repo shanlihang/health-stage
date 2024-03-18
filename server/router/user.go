@@ -9,6 +9,8 @@ import (
 func LoadUserRouter(e *gin.Engine) {
 
 	r := e.Group("/user")
-	r.GET("/list", service.GetUsersList)
+	{
+		r.GET("/list", service.GetUsersList)
+	}
 
 }

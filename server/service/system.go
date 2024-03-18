@@ -1,11 +1,12 @@
 package service
 
 import (
-	"github.com/gin-gonic/gin"
 	"server/dao"
+
+	"github.com/gin-gonic/gin"
 )
 
-func GetMenuList(ctx *gin.Context) {
+func GetMenusList(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
 		"list": dao.SelectTopMenu(),
 	})
