@@ -14,8 +14,8 @@ func SelectGoods() *[]model.Goods {
 }
 
 func DeleteGoods(ID int64) *gorm.DB {
-	row := global.DB.Where("ID = ?", ID).Delete(&model.Goods{})
-	return row
+	result := global.DB.Where("ID = ?", ID).Delete(&model.Goods{})
+	return result
 }
 
 func InsertGoods(name, remark, divide string, nums int) {

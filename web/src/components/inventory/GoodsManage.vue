@@ -244,7 +244,7 @@ onMounted(() => {
 .form{
     width: 98%;
     height: 50px;
-    display: flex;
+    display: flex; 
     align-items: center;
 }
 .add{

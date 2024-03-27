@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref,reactive, onMounted, onUnmounted } from "vue";
 import {getInputTips} from '../../api/gd/index.ts'
+import {insertCommunity,selectCommunity,deleteCommunityById} from '../../api/medical/index.ts'
+
 
 //输入提示接口
 interface InputTips{
@@ -16,13 +18,16 @@ interface InputTips{
 
 //合作社区列表管理
 interface TableData{
-  id:number,
-  POI_id:string,
-  POI_name:string,
-  POI_district:string,
-  POI_adcode:string,
-  POI_location:string,
-  POI_address:string
+  ID:number
+  id:string
+  name:string,
+  district:string,
+  adcode:string,
+  location:string,
+  address:string,
+  CreatedAt:string,
+  UpdatedAt:string,
+  DeletedAt:string,
 }
 
 //搜索表单接口定义
@@ -50,13 +55,7 @@ const bordered = ref<boolean>(true)
 const table_page = ref<boolean>(false)
 
 //表格数据
-const tableData = reactive<Array<TableData>>([
-  {id:1,POI_id:'6545',POI_name:'每年三个v你',POI_district:'山东省济南市历城区',POI_adcode:'safasfa',POI_address:'asfasfasfa',POI_location:'sfafa'},
-  {id:2,POI_id:'6545',POI_name:'每年三个v你',POI_district:'山东省济南市历城区',POI_adcode:'safasfa',POI_address:'asfasfasfa',POI_location:'sfafa'},
-  {id:3,POI_id:'6545',POI_name:'每年三个v你',POI_district:'山东省济南市历城区',POI_adcode:'safasfa',POI_address:'asfasfasfa',POI_location:'sfafa'},
-  {id:4,POI_id:'6545',POI_name:'每年三个v你',POI_district:'山东省济南市历城区',POI_adcode:'safasfa',POI_address:'asfasfasfa',POI_location:'sfafa'},
-  {id:5,POI_id:'6545',POI_name:'每年三个v你',POI_district:'山东省济南市历城区',POI_adcode:'safasfa',POI_address:'asfasfasfa',POI_location:'sfafa'}
-])
+const tableData = reactive<Array<TableData>>([])
 
 //输入提示
 const tips = reactive<Array<InputTips>>([])
@@ -119,8 +118,11 @@ const addCommunity = () => {
 
 //新增社区弹窗确认事件
 const addCommunityOk = () => {
+  insertCommunity(tempAddress.value).then(res => {
+    console.log(res);
+  })
+  initCommunity()
   addCommunityModal.value = false;
-  console.log(tempAddress.value.address);
   clearAddModal();
 };
 
@@ -147,7 +149,29 @@ const chooseAddress = (item:InputTips) => {
   tempAddress.value = item;
 }
 
-onMounted(() => {});
+//删除社区
+const deleteCommunity = (id) => {
+  deleteCommunityById({ID:id}).then(res => {
+    console.log(res);
+    
+  })
+  console.log(id);
+  
+  
+}
+
+const initCommunity = () => {
+  selectCommunity().then(res => {
+    res.data.forEach(item => {
+      tableData.push(item)
+    })
+    }
+  )
+}
+
+onMounted(() => {
+  initCommunity()
+});
 
 onUnmounted(() => {});
 
@@ -175,18 +199,18 @@ onUnmounted(() => {});
     <div class="btn"><a-button type="primary" @click="addCommunity">新增社区</a-button></div>
     <div class="table">
       <a-table :data-source="tableData" :bordered="bordered" :pagination="table_page" size="small">
-                <a-table-column align="center" title="序号" data-index="id" />
-                <a-table-column align="center" title="POI编号" data-index="POI_id" />
-                <a-table-column align="center" title="单位名称" data-index="POI_name" />
+                <a-table-column align="center" title="序号" data-index="ID" />
+                <a-table-column align="center" title="POI编号" data-index="id" />
+                <a-table-column align="center" title="单位名称" data-index="name" />
                 
-                <a-table-column align="center" title="所属区域" data-index="POI_district" />
-                <a-table-column align="center" title="详细地址" data-index="POI_address" />
+                <a-table-column align="center" title="所属区域" data-index="district" />
+                <a-table-column align="center" title="详细地址" data-index="address" />
 
                 <a-table-column align="center" title="操作">
                     <template #default="{record}">
                         <a-button type="link" primary @click="openDetail(record)">详情</a-button>
                         <a-button type="link" style="color: orange;">编辑</a-button>
-                        <a-popconfirm title="确认删除该记录吗？" ok-text="确认" cancel-text="取消" @confirm="deleteGoods(record)">
+                        <a-popconfirm title="确认删除该记录吗？" ok-text="确认" cancel-text="取消" @confirm="deleteCommunity(record.ID)">
                             <a-button type="link" danger>删除</a-button>
                         </a-popconfirm>
                         
