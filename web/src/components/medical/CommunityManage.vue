@@ -18,16 +18,16 @@ interface InputTips{
 
 //合作社区列表管理
 interface TableData{
-  ID:number
-  id:string
-  name:string,
-  district:string,
-  adcode:string,
-  location:string,
-  address:string,
-  CreatedAt:string,
-  UpdatedAt:string,
-  DeletedAt:string,
+  ID?:number
+  id?:string
+  name?:string,
+  district?:string,
+  adcode?:string,
+  location?:string,
+  address?:string,
+  CreatedAt?:string,
+  UpdatedAt?:string,
+  DeletedAt?:string,
 }
 
 //搜索表单接口定义
@@ -63,6 +63,11 @@ const tips = reactive<Array<InputTips>>([])
 //定义中转变量接收选中的地址
 const tempAddress = ref<InputTips>({})
 
+//定义中转变量接收地址详情
+const tempRecord = ref<TableData>({
+
+})
+
 //关键字搜索框
 const address = ref<string>("");
 
@@ -78,7 +83,7 @@ const detailDrawerFlag = ref<boolean>(false);
 //打开社区详情按钮点击事件
 const openDetail = (record) => {
   detailDrawerFlag.value = true;
-  console.log(record);
+  tempRecord.value = record
   
 }
 
@@ -230,7 +235,17 @@ onUnmounted(() => {});
     </div>
 
     <a-drawer title="合作社区详情" placement="bottom" :open="detailDrawerFlag" @close="closeDetailDrawer">
-      描述列表
+      <a-descriptions bordered> 
+        <a-descriptions-item label="地区编号">{{ tempRecord.id }}</a-descriptions-item>
+        <a-descriptions-item label="地区名称">{{ tempRecord.name }}</a-descriptions-item>
+        <a-descriptions-item label="所属区域">{{ tempRecord.district }}</a-descriptions-item>
+        <a-descriptions-item label="区域编码">{{ tempRecord.adcode }}</a-descriptions-item>
+        <a-descriptions-item label="地区坐标">[{{ tempRecord.location }}]</a-descriptions-item>
+        <a-descriptions-item label="详细地址">{{ tempRecord.address }}</a-descriptions-item>
+        <a-descriptions-item label="创建时间">{{ tempRecord.CreatedAt }}</a-descriptions-item>
+        <a-descriptions-item label="更新时间">{{ tempRecord.UpdatedAt }}</a-descriptions-item>
+        
+    </a-descriptions>
     </a-drawer>
     <a-modal
       v-model:open="addCommunityModal"
