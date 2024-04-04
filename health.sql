@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 80031
  Source Host           : localhost:3306
- Source Schema         : wldz
+ Source Schema         : health
 
  Target Server Type    : MySQL
  Target Server Version : 80031
  File Encoding         : 65001
 
- Date: 27/03/2024 20:59:21
+ Date: 04/04/2024 11:18:12
 */
 
 SET NAMES utf8mb4;
@@ -29,22 +29,22 @@ CREATE TABLE `community`  (
   `POI_adcode` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '区域编码',
   `POI_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '中心坐标',
   `POI_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '详细地址',
-  `created_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `updated_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `deleted_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of community
 -- ----------------------------
-INSERT INTO `community` VALUES (1, 'B0FFG6TQT3', '美里湖街道社会治理综合服务中心', '山东省济南市槐荫区', '370104', '116.931176,36.704761', '新沙北路28号', '2024-03-27 20:09:15.617', '2024-03-27 20:09:15.617', NULL);
-INSERT INTO `community` VALUES (2, 'B0GRXR7VM8', '匡山街道办事处社区卫生服务中心', '山东省济南市槐荫区', '370104', '116.947781,36.684456', '济齐路112号', '2024-03-27 20:25:30.322', '2024-03-27 20:25:30.322', NULL);
-INSERT INTO `community` VALUES (3, 'B0FFFOLNE9', '鲍山花园', '山东省济南市历城区', '370112', '117.191065,36.709074', '鲍山街道鲍山社区(鲍山地铁站B口步行390米)', '2024-03-27 20:27:18.32', '2024-03-27 20:27:18.32', NULL);
-INSERT INTO `community` VALUES (4, 'B0GUK9GRKY', '山东科创新材料有限公司', '山东省德州市齐河县', '371425', '116.803812,36.821475', '经济开发区名嘉西路(中州电缆西门)', '2024-03-27 20:27:56.638', '2024-03-27 20:27:56.638', NULL);
-INSERT INTO `community` VALUES (5, 'B0IB27UAN4', '国贸花园A区', '山东省济南市天桥区', '370105', '117.016928,36.688200', '生产路与刘家桥街交叉口东北约200米', '2024-03-27 20:29:03.779', '2024-03-27 20:29:03.779', NULL);
-INSERT INTO `community` VALUES (6, 'B0FFHM85EF', '信用社宿舍', '山东省济南市槐荫区', '370104', '116.911948,36.695810', '济齐路附近', '2024-03-27 20:34:09.747', '2024-03-27 20:34:09.747', NULL);
-INSERT INTO `community` VALUES (7, 'B021307DVQ', '龙腾小区', '山东省济南市槐荫区', '370104', '116.912659,36.694829', '济齐路136号', '2024-03-27 20:34:40.147', '2024-03-27 20:34:40.147', '2024-03-27 20:58:38.967');
+INSERT INTO `community` VALUES (1, 'B0FFG6TQT3', '美里湖街道社会治理综合服务中心', '山东省济南市槐荫区', '370104', '116.931176,36.704761', '新沙北路28号', '2024-03-27 20:09:16', '2024-03-27 20:09:16', NULL);
+INSERT INTO `community` VALUES (2, 'B0GRXR7VM8', '匡山街道办事处社区卫生服务中心', '山东省济南市槐荫区', '370104', '116.947781,36.684456', '济齐路112号', '2024-03-27 20:25:30', '2024-03-27 20:25:30', NULL);
+INSERT INTO `community` VALUES (3, 'B0FFFOLNE9', '鲍山花园', '山东省济南市历城区', '370112', '117.191065,36.709074', '鲍山街道鲍山社区(鲍山地铁站B口步行390米)', '2024-03-27 20:27:18', '2024-03-27 20:27:18', NULL);
+INSERT INTO `community` VALUES (4, 'B0GUK9GRKY', '山东科创新材料有限公司', '山东省德州市齐河县', '371425', '116.803812,36.821475', '经济开发区名嘉西路(中州电缆西门)', '2024-03-27 20:27:57', '2024-03-27 20:27:57', NULL);
+INSERT INTO `community` VALUES (5, 'B0IB27UAN4', '国贸花园A区', '山东省济南市天桥区', '370105', '117.016928,36.688200', '生产路与刘家桥街交叉口东北约200米', '2024-03-27 20:29:04', '2024-03-27 20:29:04', NULL);
+INSERT INTO `community` VALUES (6, 'B0FFHM85EF', '信用社宿舍', '山东省济南市槐荫区', '370104', '116.911948,36.695810', '济齐路附近', '2024-03-27 20:34:10', '2024-03-27 20:34:10', NULL);
+INSERT INTO `community` VALUES (7, 'B021307DVQ', '龙腾小区', '山东省济南市槐荫区', '370104', '116.912659,36.694829', '济齐路136号', '2024-03-27 20:34:40', '2024-03-27 20:34:40', '2024-03-27 20:58:39');
 
 -- ----------------------------
 -- Table structure for goods
@@ -56,16 +56,16 @@ CREATE TABLE `goods`  (
   `nums` int(0) NULL DEFAULT NULL COMMENT '物品数量',
   `uint` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品单位',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品备注',
-  `create_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `update_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `deleted_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `create_at` datetime(0) NULL DEFAULT NULL,
+  `update_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES (1, '利器盒', 100, '个', NULL, NULL, NULL, '2024-03-17 17:05:07.292');
+INSERT INTO `goods` VALUES (1, '利器盒', 100, '个', NULL, NULL, NULL, '2024-03-17 17:05:07');
 INSERT INTO `goods` VALUES (2, '针管', 200, '个', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
@@ -80,9 +80,9 @@ CREATE TABLE `people`  (
   `sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '人员性别',
   `age` int(0) NULL DEFAULT NULL COMMENT '人员年龄',
   `count` int(0) NULL DEFAULT NULL COMMENT '检测次数',
-  `create_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `update_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `deleted_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `create_at` datetime(0) NULL DEFAULT NULL,
+  `update_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -154,9 +154,9 @@ CREATE TABLE `result`  (
   `xlcp_smzkpg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '睡眠状况评估得分',
   `deviceID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '设备码',
   `examNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '体检编号',
-  `create_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `update_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `deleted_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `create_at` datetime(0) NULL DEFAULT NULL,
+  `update_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -173,9 +173,9 @@ CREATE TABLE `top_menu`  (
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '菜单名称',
   `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '菜单图标',
   `router` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '菜单路由',
-  `create_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `update_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `deleted_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `create_at` datetime(0) NULL DEFAULT NULL,
+  `update_ar` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -201,9 +201,9 @@ CREATE TABLE `users`  (
   `phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户电话',
   `mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户邮箱',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户备注',
-  `create_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `update_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `deleted_at` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `create_at` datetime(0) NULL DEFAULT NULL,
+  `update_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
